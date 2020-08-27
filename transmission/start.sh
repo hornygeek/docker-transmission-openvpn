@@ -21,8 +21,8 @@ then
    echo "/scripts/transmission-pre-start.sh returned $?"
 fi
 
-echo "Updating TRANSMISSION_BIND_ADDRESS_IPV4 to the ip of $1 : $4"
-export TRANSMISSION_BIND_ADDRESS_IPV4=$4
+# echo "Updating TRANSMISSION_BIND_ADDRESS_IPV4 to the ip of $1 : $4"
+# export TRANSMISSION_BIND_ADDRESS_IPV4=$4
 
 if [[ "combustion" = "$TRANSMISSION_WEB_UI" ]]; then
   echo "Using Combustion UI, overriding TRANSMISSION_WEB_HOME"

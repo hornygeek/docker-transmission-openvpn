@@ -15,7 +15,7 @@ RUN apt update \
     && apt -y install apt-utils software-properties-common wget git curl jq apt-transport-https ca-certificates add-apt-key debconf-utils iptables expect  \
     && add-apt-repository ppa:transmissionbt/ppa \
     && apt update \
-    && apt install -y sudo transmission-cli transmission-common transmission-daemon curl rar unrar zip unzip iputils-ping openvpn bc tzdata bash \
+    && apt install -y sudo transmission-cli transmission-common transmission-daemon curl unrar zip unzip iputils-ping openvpn bc tzdata bash \
     python2.7 python2.7-pysqlite2 && ln -sf /usr/bin/python2.7 /usr/bin/python2 \
     && apt -y upgrade \
     && wget https://github.com/Secretmapper/combustion/archive/release.zip \

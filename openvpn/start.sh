@@ -44,7 +44,7 @@ fi
 windscribe account
 
 # Final config tweaks possible now logged in
-#windscribe firewall off #Proxy operation does not require this be disabled so we'll leave as is
+windscribe firewall off #Proxy operation does not require this be disabled so we'll leave as is
 windscribe protocol tcp #We switch this as it may potentially work better over some NAT configurations
 windscribe connect ${WINDSCRIBE_COUNTRY}
 

@@ -94,3 +94,5 @@ then
 fi
 
 echo "Transmission startup script complete."
+
+sleep 99999999999

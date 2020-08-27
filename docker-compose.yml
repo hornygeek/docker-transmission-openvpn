@@ -22,7 +22,8 @@ services:
     - WINDSCRIBE_PASSWORD=${WINDSCRIBE_PASSWORD}
     - HOST_PORT=${HOST_PORT:-8888} #Pass for echo purposes
     - WINDSCRIBE_COUNTRY=${WINDSCRIBE_COUNTRY}
-    - LOCAL_NETWORK=192.168.0.0/24
+    - LOCAL_NETWORK=192.168.1.0/24
+    - TRANSMISSION_WEB_UI=combustion
 
 #  proxy:
 #   image: haugene/transmission-openvpn-proxy:latest-armhf

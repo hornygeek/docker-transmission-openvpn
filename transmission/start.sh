@@ -35,7 +35,7 @@ if [[ "kettu" = "$TRANSMISSION_WEB_UI" ]]; then
 fi
 
 if [[ "transmission-web-control" = "$TRANSMISSION_WEB_UI" ]]; then
-  echo "Using Transmission Web Control  UI, overriding TRANSMISSION_WEB_HOME"
+  echo "Using Transmission Web Control  UI,π overriding TRANSMISSION_WEB_HOME"
   export TRANSMISSION_WEB_HOME=/opt/transmission-ui/transmission-web-control
 fi
 

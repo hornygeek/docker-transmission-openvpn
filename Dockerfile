@@ -12,10 +12,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Update, upgrade and install core software
 RUN apt update \
-    && apt -y install apt-utils software-properties-common wget git curl jq \
+    && apt -y install apt-utils software-properties-common wget git curl jq apt-transport-https ca-certificates add-apt-key debconf-utils iptables expect  \
     && add-apt-repository ppa:transmissionbt/ppa \
     && apt update \
-    && apt install -y sudo transmission-cli transmission-common transmission-daemon curl rar unrar zip unzip ufw iputils-ping openvpn bc tzdata bash \
+    && apt install -y sudo transmission-cli transmission-common transmission-daemon curl rar unrar zip unzip iputils-ping openvpn bc tzdata bash \
     python2.7 python2.7-pysqlite2 && ln -sf /usr/bin/python2.7 /usr/bin/python2 \
     && apt -y upgrade \
     && wget https://github.com/Secretmapper/combustion/archive/release.zip \
@@ -38,15 +38,18 @@ RUN apt update \
     && useradd -u 911 -U -d /config -s /bin/false abc \
     && usermod -G users abc
 
+RUN echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections #This is a Docker specific thing because it enforces it's own /etc/resolv.conf
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key FDC247B7
+RUN echo 'deb https://repo.windscribe.com/ubuntu zesty main' | tee /etc/apt/sources.list.d/windscribe-repo.list
+RUN apt-get update && \
+apt-get -y install --no-install-recommends windscribe-cli
+
 ADD openvpn/ /etc/openvpn/
 ADD transmission/ /etc/transmission/
 ADD tinyproxy /opt/tinyproxy/
 ADD scripts /etc/scripts/
 
-ENV OPENVPN_USERNAME=**None** \
-    OPENVPN_PASSWORD=**None** \
-    OPENVPN_PROVIDER=**None** \
-    GLOBAL_APPLY_PERMISSIONS=true \
+ENV  GLOBAL_APPLY_PERMISSIONS=true \
     TRANSMISSION_ALT_SPEED_DOWN=50 \
     TRANSMISSION_ALT_SPEED_ENABLED=false \
     TRANSMISSION_ALT_SPEED_TIME_BEGIN=540 \
